@@ -182,3 +182,8 @@ int WriteConfigurationC(const char *filename, const char *section,const CONFENTR
 	#define WriteConfiguration WriteConfigurationC
 #endif
 
+
+
+/* global conf entry TODO comment */
+CONFENTRY *glEntry;
+int glEntryCount;

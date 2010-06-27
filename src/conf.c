@@ -20,11 +20,11 @@
 #include <Windows.h>
 #endif
 
-#include "Conf.h"
-#include "InternalConf.h"
+#include "../includes/conf.h"
+#include "internalConf.h"
+#include "config.h"
 
-CONFENTRY *glEntry;
-int glEntryCount;
+
 
 
 char * own_strtolower(char * str)

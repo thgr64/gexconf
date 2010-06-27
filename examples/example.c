@@ -1,7 +1,7 @@
 // ConfHelper.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
 //
 
-#include "Conf.h"
+#include "../include/gexconf.h"
 #include <math.h>
 #include <Windows.h>
 
