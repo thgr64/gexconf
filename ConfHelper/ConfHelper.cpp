@@ -2,7 +2,6 @@
 //
 
 #include "Conf.h"
-#include <tchar.h>
 #include <math.h>
 #include <Windows.h>
 
@@ -52,11 +51,11 @@ CONFENTRY entry[] =
 
 };
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 	SetConfigEntryDefString(&entry[5], "/Hello/world/path/C");
 	SetConfigEntryFloat(&entry[7],3.0,3.2,PI);
-	FillRemaining(&entry[0], 8,NULL,NULL);
+	//FillRemaining(&entry[0], 8,NULL,NULL);
 	WriteCompleteConfiguration(L"test.conf",entry, 8, NULL, ANSI, 4096); 
 	//LoadConfiguration(L"test.conf",NULL, entry, 8, NULL, NULL, 4096); 
 	

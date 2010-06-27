@@ -82,30 +82,6 @@ int expandbuffer(char* str, int charcount, wchar_t *output)
 }
 
 
-/**
-	Just an example
-*/
-
-
-/*
-	useful after you set the global configuration entries
-*/
-int GetConfiguration(const wchar_t *filename)
-{
-	if (glEntry==NULL)
-		return -1;
-
-	int res[7];
-	memset(res, 0, sizeof(int)*glEntryCount);
-	LoadConfiguration(filename, NULL, glEntry, glEntryCount, res, NULL, DEF_BUF_SIZE);
-	FillRemaining(glEntry, glEntryCount,res, NULL);
-	return 0;
-}
-
-/**
-	END FO EXAMPLE
-*/
-
 int SetGlobalConfigDefinition(CONFENTRY *entrydef, int entrycount)
 {
 	glEntry = entrydef;
