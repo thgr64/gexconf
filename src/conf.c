@@ -20,7 +20,7 @@
 #include <Windows.h>
 #endif
 
-#include "../includes/conf.h"
+#include "../include/gexconf.h"
 #include "internalConf.h"
 #include "config.h"
 
