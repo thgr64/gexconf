@@ -672,7 +672,7 @@ char *ProcessKeyA(const CONFENTRY *entrydef, const int size, int* result, const 
 			else if (entrydef[i].flags & TYPE_USERDEF)
 			{
 				//TODO Call additionalData
-				ret = (char*)(FUNCTION_TYPE(entrydef[i].additionaldata))(&entrydef[i], (char*)value, entrydef[i].value);
+				//ret = (char*)(FUNCTION_TYPE(entrydef[i].additionaldata))(&entrydef[i], (char*)value, entrydef[i].value);
 				return ret;
 			}
 			else
@@ -827,11 +827,12 @@ int WriteCompleteConfigurationW(const wchar_t *filename, const CONFENTRY *entryd
 {
 	
 	char *buffer;
+	int ret;
+
 	buffer = (char*) malloc(maxbufsize+4);
 	if (buffer==NULL)
 		return -1;
 
-	int ret;
 	if (CharType==UTF_16)
 	{
 		//ret = PrepareConfigBufferW
@@ -853,11 +854,12 @@ int WriteCompleteConfigurationA(const char *filename, const CONFENTRY *entrydef,
 {
 	
 	char *buffer;
+	int ret;
+
 	buffer = (char*) malloc(maxbufsize+4);
 	if (buffer==NULL)
 		return -1;
 
-	int ret;
 	if (CharType==UTF_16)
 	{
 		//ret = PrepareConfigBufferW
@@ -879,11 +881,12 @@ int WriteCompleteConfigurationC(const char *filename, const CONFENTRY *entrydef,
 {
 	
 	char *buffer;
+	int ret;
+
 	buffer = (char*) malloc(maxbufsize+4);
 	if (buffer==NULL)
 		return -1;
 
-	int ret;
 	if (CharType==UTF_16)
 	{
 		//ret = PrepareConfigBufferW
@@ -909,6 +912,9 @@ int WriteCompleteConfigurationC(const char *filename, const CONFENTRY *entrydef,
 int WriteSectionA(const char *filename, const char *section, const CONFENTRY *entrydef, const int size, const int CharType, int maxbufsize)
 {
 	int ret;
+	int len;
+	int nsize=0;
+	int remaining=maxbufsize;
 
 	unsigned char **buffer;
 	unsigned char **newbuf;
@@ -924,9 +930,6 @@ int WriteSectionA(const char *filename, const char *section, const CONFENTRY *en
 		return -1;
 	}
 
-	int len;
-	int nsize=0;
-	int remaining=maxbufsize;
 
 	if((ret=LoadConfigFileA(filename, buffer, maxbufsize))==0)
 	{

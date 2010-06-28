@@ -72,23 +72,23 @@
 /**
 	Types to be used by the CONFENTRIES
 */
-union DATA
+typedef union DATA
 {
 	int 	i;
 	double 	d;
 	char	*c;
 	void    *v;
-};
+}DATA;
 
 
-struct LIST_TYPE
+typedef struct LIST_TYPE
 {
 	DATA from;
 	DATA to;
 	DATA def;
 	int flags;
 	int offset;
-};
+}LIST_TYPE;
 
 /**
 	This type defines a configuration entry
@@ -105,7 +105,7 @@ struct LIST_TYPE
 	additionaldata  
 	value		-	pointer to a location where the data can be stored
 */
-struct CONFENTRY
+typedef struct CONFENTRY
 {
 	DATA from;
 	DATA to;
@@ -117,7 +117,7 @@ struct CONFENTRY
 	char *description;
 	void *additionaldata;
 	void **value;
-};
+} CONFENTRY;
 
 /**
 	User-defined function prototype
