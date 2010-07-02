@@ -3,8 +3,9 @@
 cmake_minimum_required(VERSION 2.6)
 
 
-INCLUDE (CheckCXXSourceCompiles)
 INCLUDE (CheckCSourceCompiles)
+INCLUDE (CheckTypeSize) 
+include (TestBigEndian)
 
 PROJECT("gextconf")
 
@@ -35,13 +36,23 @@ endif ()
 # tests 
 CHECK_C_SOURCE_COMPILES("int main() { return 1; }" HAVE_TEST1)
 
+test_big_endian(SYSTEM_IS_BIG_ENDIAN)
+if (NOT SYSTEM_IS_BIG_ENDIAN)
+	set(SYSTEM_IS_LITTLE_ENDIAN true)
+endif ()
 
+
+# get the size of wchar_t
+SET(CMAKE_EXTRA_INCLUDE_FILES wchar.h)
+CHECK_TYPE_SIZE("wchar_t" WCHAR_T)
+SET(CMAKE_EXTRA_INCLUDE_FILES)
 
 set(libSources
 	src/conf.c)
 
-ADD_LIBRARY(gexconf STATIC ${libSources})
+#ADD_LIBRARY(gexconf STATIC ${libSources})
 
+ADD_EXECUTABLE(conv-test src/convert.c)
 
 # add sample file
 #ADD_EXECUTABLE(example-file)
