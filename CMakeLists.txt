@@ -50,9 +50,9 @@ SET(CMAKE_EXTRA_INCLUDE_FILES)
 set(libSources
 	src/conf.c)
 
-#ADD_LIBRARY(gexconf STATIC ${libSources})
+ADD_LIBRARY(gexconf STATIC ${libSources})
 
-ADD_EXECUTABLE(conv-test src/convert.c)
+#ADD_EXECUTABLE(conv-test src/convert.c)
 
 # add sample file
 #ADD_EXECUTABLE(example-file)
